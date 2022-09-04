@@ -42,6 +42,22 @@ const routes = [
         },
     },
     {
+        method: 'POST',
+        path: '/contact',
+        handler: (request, h) => {
+            const { name, message } = request.payload;
+            return h
+                .response({
+                    message: `Thank you ${name}, your message successfully submitted`,
+                    data: {
+                        name,
+                        message,
+                    }
+                })
+                .code(201);
+        },
+    },
+    {
         method: '*',
         path: '/{any*}',
         handler: (request, h) => {
