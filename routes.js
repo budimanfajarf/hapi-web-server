@@ -10,7 +10,7 @@ const routes = [
         method: '*',
         path: '/',
         handler: (request, h) => {
-            return 'Halaman tidak dapat diakses dengan method tersebut';
+            return `Halaman tidak dapat diakses dengan method ${request.method}`;
         },
     },
     {
@@ -24,7 +24,15 @@ const routes = [
         method: '*',
         path: '/about',
         handler: (request, h) => {
-            return 'Halaman tidak dapat diakses dengan method';
+            return `Halaman tidak dapat diakses dengan method ${request.method}`;
+        },
+    },
+    {
+        method: 'GET',
+        path: '/hello/{name?}',
+        handler: (request, h) => {
+            const { name = "stranger" } = request.params;
+            return `Hello, ${name}!`;
         },
     },
     {
